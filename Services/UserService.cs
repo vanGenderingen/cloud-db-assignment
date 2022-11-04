@@ -20,5 +20,30 @@ namespace cloud_databases_cvgen.Services
             return await _repository.Create(user);
         }
 
+        public async Task CalculateMortage()
+        {
+            foreach (User user in await _repository.GetAll())
+            {
+                if(user.Mortage is null)
+                {
+                    Mortage mortage = new Mortage()
+                    {
+                        Id = Guid.NewGuid(),
+                        MaximumMortage = user.AnnualIncome * 5,
+                        ExpireDate = DateTime.UtcNow.AddDays(1),
+                        SendMail = false
+                    };
+                    user.Mortage = mortage;
+
+                    await _repository.Commit();
+                }
+                else
+                {
+                    _logger.LogInformation("Mortage already has been set for user" + user.Id);
+                }
+                
+            }
+        }
+
     }
 }

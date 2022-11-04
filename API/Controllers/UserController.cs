@@ -7,10 +7,7 @@ using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System;
-using System.IO;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace cloud_databases_cvgen.API.Controllers
 {

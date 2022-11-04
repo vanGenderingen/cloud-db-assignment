@@ -4,6 +4,7 @@ using cloud_databases_cvgen.DAL;
 using cloud_databases_cvgen.DAL.Context;
 using cloud_databases_cvgen.DAL.Repositories;
 using cloud_databases_cvgen.DAL.Repositories.Interfaces;
+using cloud_databases_cvgen.Models;
 using cloud_databases_cvgen.Services;
 using cloud_databases_cvgen.Services.Interfaces;
 using Microsoft.Azure.Functions.Worker.Extensions.OpenApi.Extensions;
@@ -38,6 +39,10 @@ namespace Casper.CloudDatabase
                     services.AddScoped<IRepository<User>, UserRepository>();
                     services.AddScoped<IUserRepository, UserRepository>();
                     services.AddScoped<IUserService, UserService>();
+
+                    services.AddScoped<IRepository<Mortage>, MortgageRepository>();
+                    services.AddScoped<IMortageRepository, MortgageRepository>();
+                    services.AddScoped<IMortageService, MortageService>();
 
                     services.AddAutoMapper(typeof(Program));
                 })
