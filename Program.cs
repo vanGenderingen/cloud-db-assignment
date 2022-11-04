@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using System.Threading.Tasks;
 using cloud_databases_cvgen.DAL;
 using cloud_databases_cvgen.DAL.Context;
 using cloud_databases_cvgen.DAL.Repositories;
@@ -17,7 +16,7 @@ namespace Casper.CloudDatabase
 {
     public static class Program
     {
-        static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
             var config = new ConfigurationBuilder()
             .SetBasePath(Environment.CurrentDirectory)
@@ -44,7 +43,7 @@ namespace Casper.CloudDatabase
                 })
                 .Build();
 
-            await host.RunAsync();
+            host.Run();
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using cloud_databases_cvgen.Models;
 using cloud_databases_cvgen.Models.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace cloud_databases_cvgen.Services.Interfaces
 {

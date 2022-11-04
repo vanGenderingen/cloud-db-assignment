@@ -2,6 +2,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
+    <OutputType>Exe</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>cloud_databases_cvgen</RootNamespace>
     <UserSecretsId>827355fa-b54c-4dcf-bfe4-5032e06fe3a5</UserSecretsId>
   </PropertyGroup>

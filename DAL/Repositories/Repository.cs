@@ -2,9 +2,6 @@
 using cloud_databases_cvgen.DAL.Repositories.Interfaces;
 using cloud_databases_cvgen.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace cloud_databases_cvgen.DAL.Repositories
 {
@@ -17,22 +14,17 @@ namespace cloud_databases_cvgen.DAL.Repositories
             _databaseContext = databaseContext;
         }
 
-        public virtual async Task<T> Ceate(T entity)
-        {
-            await _databaseContext.Set<T>().AddAsync(entity);
-            await _databaseContext.SaveChangesAsync();
-
-            return await GetById(entity.Id);
-        }
-
         public async Task Commit()
         {
             await _databaseContext.SaveChangesAsync();
         }
 
-        public Task<T> Create(T entity)
+        public virtual async Task<T> Create(T entity)
         {
-            throw new NotImplementedException();
+            await _databaseContext.Set<T>().AddAsync(entity);
+            await _databaseContext.SaveChangesAsync();
+
+            return await GetById(entity.Id);
         }
 
         public virtual async Task<ICollection<T>> GetAll()

@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace cloud_databases_cvgen.API.Controllers
 {
-    internal class UserController
+    public class UserController
     {
         private readonly ILogger<UserController> _logger;
         private readonly IUserService _userService;
@@ -46,7 +46,7 @@ namespace cloud_databases_cvgen.API.Controllers
 
                 User createdUser = await _userService.Create(user);
 
-                CreateUserRequestDTO mappedCreatedUser = _mapper.Map<CreateUserRequestDTO>(createdUser);
+                CreatedUserResponseDTO mappedCreatedUser = _mapper.Map<CreatedUserResponseDTO>(createdUser);
 
                 await response.WriteAsJsonAsync(mappedCreatedUser);
             }

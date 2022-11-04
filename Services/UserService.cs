@@ -3,8 +3,6 @@ using Microsoft.Extensions.Logging;
 using cloud_databases_cvgen.Models;
 using cloud_databases_cvgen.Services.Interfaces;
 using cloud_databases_cvgen.DAL.Repositories.Interfaces;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 
 namespace cloud_databases_cvgen.Services
 {
