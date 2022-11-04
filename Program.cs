@@ -44,6 +44,8 @@ namespace Casper.CloudDatabase
                     services.AddScoped<IMortageRepository, MortgageRepository>();
                     services.AddScoped<IMortageService, MortageService>();
 
+                    services.AddScoped<IMailService, MailService>();
+
                     services.AddAutoMapper(typeof(Program));
                 })
                 .Build();
