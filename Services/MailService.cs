@@ -26,7 +26,7 @@ namespace cloud_databases_cvgen.Services
         {
             // Set the email details
             SendGridClient client = new(_config.SendgridAPIKey);
-            EmailAddress sender = new("645568@student.inholland.nl");
+            EmailAddress sender = new("luuk@lkenselaar.dev");
             string subject = "BuyMyHouse - calculated mortgage";
             EmailAddress receiver = new(user.Email);
 
