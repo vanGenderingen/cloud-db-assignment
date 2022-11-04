@@ -17,7 +17,7 @@ namespace cloud_databases_cvgen.API.TimerTriggers
         }
 
         [Function("CalculateMortage")]
-        public async Task Run([TimerTrigger("0 11 20 * * *")] Timer timer)
+        public async Task Run([TimerTrigger("0 0 23 * * *")] Timer timer)
         {
             //Run the update everynight at 23:00
             await _userService.CalculateMortgages();

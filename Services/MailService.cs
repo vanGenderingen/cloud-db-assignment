@@ -13,28 +13,26 @@ namespace cloud_databases_cvgen.Services
     {
         private readonly ILogger<MailService> _logger;
         private readonly IUserRepository _userRepository;
-        private readonly IMortageRepository _mortgageRepository;
         private readonly FunctionConfiguration _config;
 
-        public MailService(ILogger<MailService> logger, IUserRepository userRepository, IMortageRepository mortgageRepository, FunctionConfiguration config)
+        public MailService(ILogger<MailService> logger, IUserRepository userRepository, FunctionConfiguration config)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
-            _mortgageRepository = mortgageRepository ?? throw new ArgumentNullException(nameof(mortgageRepository));
             _config = config ?? throw new ArgumentNullException(nameof(config));
         }
 
         private async Task SendEmail(User user)
         {
             // Set the email details
-            SendGridClient client = new SendGridClient(_config.SendgridAPIKey);
-            EmailAddress sender = new EmailAddress("645568@student.inholland.nl");
+            SendGridClient client = new(_config.SendgridAPIKey);
+            EmailAddress sender = new("645568@student.inholland.nl");
             string subject = "BuyMyHouse - calculated mortgage";
-            EmailAddress receiver = new EmailAddress(user.Email);
+            EmailAddress receiver = new(user.Email);
 
-            string contentPlaintext = $"Beste {user.Name}, klik op de onderstaande link om de gegevens van uw berekende hypotheek te zien. Deze link is 24 uur geldig. http://localhost:7071/api/mortgage/{user.Id}";
+            string contentPlaintext = $"http://localhost:7022/api/mortgage/{user.Id}";
 
-            string contentHTML = $"Beste {user.Name}, <br> klik op de onderstaande link om de gegevens van uw berekende hypotheek te zien. Deze link is 24 uur geldig.<br><a href='http://localhost:7071/api/mortgage/{user.Id}'>Klik hier</a>";
+            string contentHTML = $"<a href='http://localhost:7022/api/mortgage/{user.Id}'>Klik hier</a>";
 
             SendGridMessage message = MailHelper.CreateSingleEmail(sender, receiver, subject, contentPlaintext, contentHTML);
 

@@ -17,9 +17,9 @@ namespace cloud_databases_cvgen.API.TimerTriggers
         }
 
         [Function("MailUsersTimer")]
-        public void Run([TimerTrigger("0 20 20 * * *")] Timer timer)
+        public void Run([TimerTrigger("0 0 10 * * *")] Timer timer)
         {
-            _logger.LogInformation("Mailing users...");
+            _logger.LogInformation("Sending mail to the users");
             _mailService.MailAllUsers();
         }
     }
