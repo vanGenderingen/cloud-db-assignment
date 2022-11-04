@@ -30,7 +30,7 @@ namespace cloud_databases_cvgen.API.Controllers
         [OpenApiParameter(name: "mortgageId", In = ParameterLocation.Path, Required = true)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(MortageResponseDTO), Description = "The OK response")]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.BadRequest, contentType: "application/json", bodyType: typeof(string), Description = "The BAD REQUEST response")]
-        public async Task<HttpResponseData> GetMortgageById([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "Users/{UserId}/Mortgage")] HttpRequestData req, Guid userId)
+        public async Task<HttpResponseData> GetMortgageById([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "mortgage/{UserId}")] HttpRequestData req, Guid userId)
         {
             HttpResponseData response = req.CreateResponse();
 
