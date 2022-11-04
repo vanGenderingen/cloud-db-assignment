@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace cloud_databases_cvgen.DAL.Repositories
 {
-    internal class Repository<T>: IRepository<T> where T : class, IEntity
+    public class Repository<T>: IRepository<T> where T : class, IEntity
     {
         protected readonly DatabaseContext _databaseContext;
 
@@ -25,14 +25,19 @@ namespace cloud_databases_cvgen.DAL.Repositories
             return await GetById(entity.Id);
         }
 
-        public Task<T> Commit()
+        public async Task Commit()
+        {
+            await _databaseContext.SaveChangesAsync();
+        }
+
+        public Task<T> Create(T entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ICollection<T>> GetAll()
+        public virtual async Task<ICollection<T>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _databaseContext.Set<T>().ToListAsync();
         }
 
         public virtual async Task<T> GetById(Guid id)

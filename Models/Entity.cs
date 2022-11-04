@@ -4,7 +4,7 @@ using System;
 
 namespace cloud_databases_cvgen.Models
 {
-    internal class Entity : IEntity
+    public class Entity : IEntity
     {
         [JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
         public Guid Id { get; set; }

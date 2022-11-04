@@ -1,15 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using cloud_databases_cvgen.Models;
-using cloud_databases_cvgen.Services.Interfaces
+using cloud_databases_cvgen.Services.Interfaces;
+using cloud_databases_cvgen.DAL.Repositories.Interfaces;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace cloud_databases_cvgen.Services
 {
-    internal class UserService(ILogger<UserService> logger) : base(repo)
+    public class UserService : Service<User>, IUserService
     {
+        public readonly ILogger<UserService> _logger;
+
+        public UserService(ILogger<UserService> logger, IRepository<User> repository) : base(repository)
+        {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
+        
+        public override async Task<User> Create(User user)
+        {
+            return await _repository.Create(user);
+        }
+
     }
 }

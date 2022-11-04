@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace cloud_databases_cvgen.Models.DTO
 {
-    internal class CreateUserRequestDTO
+    public class CreateUserRequestDTO
     {
         [JsonRequired]
         [OpenApiProperty(Default = "John Doe", Description = "This is the name of the user")]

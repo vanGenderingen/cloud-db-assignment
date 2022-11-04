@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace cloud_databases_cvgen.Services.Interfaces
 {
-    internal interface IService<T> where T : class, IEntity
+    public interface IService<T> where T : class, IEntity
     {
         public Task<T> GetById(Guid id);
         public Task<ICollection<T>> GetAll();

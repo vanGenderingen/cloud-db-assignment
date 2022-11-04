@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace cloud_databases_cvgen.Models
 {
-    internal class User : Entity
+    public class User : Entity
     {
         public string Name { get; set; }
         public string Email { get; set; }
